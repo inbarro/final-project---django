@@ -1,6 +1,3 @@
-import sys
-import os
-import pandas as pd
 
 import xml.etree.ElementTree as ElementTree
 
@@ -11,14 +8,8 @@ from nltk.stem import PorterStemmer
 from collections import Counter
 from num2words import num2words
 
-import nltk
 import os
-import string
 import numpy as np
-import copy
-import pandas as pd
-import pickle
-import re
 import math
 
 
@@ -38,6 +29,7 @@ def convert_lower_case(data):
 
 def remove_stop_words(data):
     stop_words = stopwords.words('english')
+    stop_words += ['\n\n', '\n', "summary", "end summary"]
     words = word_tokenize(str(data))
     new_text = ""
     for w in words:

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
+from algorithms import TFIDF
 
 
 def register(request):
@@ -19,4 +20,14 @@ def register(request):
 @login_required
 def engine(request):
     return render(request, 'users/engine.html')
+
+
+def tfifd (request):
+    data = TFIDF.cosine_similarity(10, "Falkland petroleum exploration")
+    return render(request, 'users/tfidf.html', {'data': data})
+
+
+def jaccard (request):
+    return render(request, 'users/jaccard.html')
+
 
